@@ -106,6 +106,10 @@ endif
 let g:jsx_ext_required = 0
 
 " // ===== Keybindings ===== //
+let mapleader = "\<Space>"
+
+nmap <leader>vr :sp $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
 
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
