@@ -11,3 +11,15 @@ git clone git@github.com:hellosmithy/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
+
+## Updating
+
+```
+cd PATH/TO/dotfiles
+git pull origin master
+command $(which nvim || which vim) +PlugUpdate +qall
+```
+
+## neovim health check
+
+Run `:CheckHealth` from inside neovim
