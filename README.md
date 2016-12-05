@@ -1,3 +1,7 @@
-# Ben Smith's dotfiles
+# dotfiles
 
-Bare-bones dotfiles setup. Currently symlinking needs to be done manually after cloning the repository.
+```
+git clone git@github.com:hellosmithy/dotfiles.git
+cd dotfiles
+./install.sh
+```
