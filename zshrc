@@ -76,7 +76,7 @@ fi
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias vimrc="vim ~/.vimrc.js/vimrc.local"
+alias vimrc="vim ~/.config/nvim/init.vim"
 alias ls="ls -lrthG"
 
 eval "$(rbenv init -)"
