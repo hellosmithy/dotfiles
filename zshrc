@@ -77,9 +77,7 @@ alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.vimrc.js/vimrc.local"
-alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
 alias ls="ls -lrthG"
-alias lsa="ls -alrthG"
 
 eval "$(rbenv init -)"
 
