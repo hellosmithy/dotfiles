@@ -74,9 +74,9 @@ fi
 # For a full list of active aliases, run `alias`.
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias vimrc="vim ~/.config/nvim/init.vim"
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias vimrc="$EDITOR ~/.config/nvim/init.vim"
 alias ls="ls -lrthG"
 
 eval "$(rbenv init -)"
