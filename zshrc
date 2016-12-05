@@ -87,4 +87,4 @@ eval "$(rbenv init -)"
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/bensmith/.npm-packages/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/bensmith/.npm-packages/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
+[[ -f $NPM_PACKAGES/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . $NPM_PACKAGES/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
