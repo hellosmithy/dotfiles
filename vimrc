@@ -20,6 +20,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/lightline.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " -- Automcomplete plugins --
 Plug 'ervandew/supertab'
