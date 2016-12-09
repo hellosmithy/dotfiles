@@ -21,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " -- Automcomplete plugins --
 Plug 'ervandew/supertab'
