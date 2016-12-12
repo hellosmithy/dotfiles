@@ -134,5 +134,6 @@ nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
 
 " == scrooloose/nerdtree ==
+let NERDTreeShowHidden=1
 nnoremap <C-\> :NERDTreeToggle<CR>
 inoremap <C-\> <ESC>:NERDTreeToggle<CR>
