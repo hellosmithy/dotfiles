@@ -109,18 +109,18 @@ endif
 let g:jsx_ext_required = 0
 
 " // ===== Editor configuration ===== //
-" Use the same symbols as TextMate for tabstops and EOLs
+" Toggling and subtle highlighting of spaces, tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬,space:·
-" Subtle whitespace character colors 
 highlight NonText ctermfg=233 guifg=#121212 "rgb=18,18,18
 highlight SpecialKey ctermfg=233 guifg=#121212 "rgb=18,18,18
 
 " // ===== Keybindings ===== //
 let mapleader = "\<Space>"
 
-nmap <leader>vr :sp $MYVIMRC<cr>
-nmap <leader>so :source $MYVIMRC<cr>
-nmap <leader>l :set list!<cr>
+nmap <leader>vr :sp $MYVIMRC<CR>
+nmap <leader>so :source $MYVIMRC<CR>
+nmap <leader>l :set list!<CR> " toggle whitespace chars
+nmap <leader>n :set rnu!<CR> " toggle relative line numbers
 
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
