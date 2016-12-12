@@ -108,11 +108,19 @@ endif
 " -- mxw/vim-jsx --
 let g:jsx_ext_required = 0
 
+" // ===== Editor configuration ===== //
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬,space:·
+" Subtle whitespace character colors 
+highlight NonText ctermfg=233 guifg=#121212 "rgb=18,18,18
+highlight SpecialKey ctermfg=233 guifg=#121212 "rgb=18,18,18
+
 " // ===== Keybindings ===== //
 let mapleader = "\<Space>"
 
 nmap <leader>vr :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
+nmap <leader>l :set list!<cr>
 
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
