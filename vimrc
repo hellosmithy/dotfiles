@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
@@ -125,3 +126,7 @@ nmap <leader>n :set rnu!<CR> " toggle relative line numbers
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
+
+" == scrooloose/nerdtree ==
+nnoremap <C-\> :NERDTreeToggle<CR>
+inoremap <C-\> <ESC>:NERDTreeToggle<CR>
