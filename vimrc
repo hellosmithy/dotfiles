@@ -123,6 +123,12 @@ nmap <leader>so :source $MYVIMRC<CR>
 nmap <leader>l :set list!<CR> " toggle whitespace chars
 nmap <leader>n :set rnu!<CR> " toggle relative line numbers
 
+" Edit another file in the same directory as the current file
+" uses expression to extract path from current file's path
+map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <Leader>vsp :vsplit <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
