@@ -24,6 +24,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'altercation/vim-colors-solarized'
 
 " -- Automcomplete plugins --
 Plug 'ervandew/supertab'
@@ -57,6 +58,8 @@ endif
 call plug#end()
 
 syntax enable
+set background=dark
+colorscheme solarized
 set number
 
 " // ===== Configure NeoMake ===== //
