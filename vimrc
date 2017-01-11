@@ -4,8 +4,9 @@ set nocompatible
 " // ===== Plugins ===== //
 " -- Add support for Python plugins-- 
 if has('nvim')
-  let g:python2_host_prog = '/usr/local/bin/python'
-  let g:python3_host_prog = '/usr/local/bin/python3'
+  let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.11/bin/python'
+  let g:python2_host_prog = $HOME.'/.pyenv/versions/2.7.11/bin/python'
+  let g:python3_host_prog = $HOME.'/.pyenv/versions/3.5.2/bin/python3'
 endif
 
 call plug#begin()
