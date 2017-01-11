@@ -42,11 +42,21 @@ plugins=(git git-extras gitfast node npm dirhistory zsh-syntax-highlighting zsh-
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
+# pyenv
+# https://github.com/yyuu/pyenv-installer
+export PATH="/Users/bensmith/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$PATH:`yarn global bin`"
+PATH="$(npm bin):$PATH"
+
+if brew ls --versions yarn > /dev/null; then
+  export PATH="$PATH:`yarn global bin`"
+fi
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 # command
@@ -64,7 +74,7 @@ else
 fi
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
