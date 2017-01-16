@@ -21,6 +21,35 @@ On macOS `reattach-to-user-namespace` is required for the tmux configuration she
 brew install reattach-to-user-namespace
 ```
 
+## Python bindings
+
+```
+brew install pyenv
+brew install --HEAD pyenv-virtualenv
+# (or alternatively https://github.com/yyuu/pyenv-installer)
+
+pyenv install 2.7.11
+pyenv install 3.5.2
+
+pyenv virtualenv 2.7.11 neovim2
+pyenv virtualenv 3.5.2 neovim3
+
+pyenv activate neovim2
+pip install neovim
+pyenv which python  # Note the path
+
+pyenv activate neovim3
+pip install neovim
+pyenv which python  # Note the path
+
+# The following is optional, and the neovim3 env is still active
+# This allows flake8 to be available to linter plugins regardless
+# of what env is currently active.  Repeat this pattern for other
+# packages that provide cli programs that are used in Neovim.
+pip install flake8
+ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
+```
+
 ## Updating
 
 ```
