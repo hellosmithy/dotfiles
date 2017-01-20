@@ -39,12 +39,12 @@ plugins=(git git-extras gitfast node npm dirhistory zsh-syntax-highlighting zsh-
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # pyenv
 # https://github.com/yyuu/pyenv-installer
-export PATH="/Users/bensmith/.pyenv/bin:$PATH"
+PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -52,11 +52,12 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
-PATH="$(npm bin):$PATH"
 
 if brew ls --versions yarn > /dev/null; then
-  export PATH="$PATH:`yarn global bin`"
+  PATH="$PATH:`yarn global bin`"
 fi
+
+export PATH
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 # command
