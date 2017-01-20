@@ -52,7 +52,7 @@ endif
 if has('nvim')
   Plug 'neomake/neomake'
 else
-  Plug 'scrooloose/syntastic'
+  Plug 'vim-syntastic/syntastic'
   Plug 'flowtype/vim-flow'
 endif
 
@@ -98,7 +98,7 @@ if has('nvim')
 
   autocmd! BufWritePost * Neomake
 else
-  " -- scrooloose/syntastic --
+  " -- vim-syntastic/syntastic --
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
