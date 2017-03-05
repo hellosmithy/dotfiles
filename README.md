@@ -21,6 +21,12 @@ On macOS `reattach-to-user-namespace` is required for the tmux configuration she
 brew install reattach-to-user-namespace
 ```
 
+## fzf & The Silver Searcher
+
+```
+brew install fzf the_silver_searcher
+```
+
 ## Python bindings
 
 ```
