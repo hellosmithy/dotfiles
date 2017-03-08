@@ -93,6 +93,7 @@ alias ls="ls -lrthG"
 # Git shortcuts
 alias gb="git branch | fzf-tmux -d 15 | xargs git checkout"
 alias ga="git status --short | fzf-tmux -d 15 | sed 's/^.* //' | xargs git add"
+alias gf="git log --abbrev-commit --date=relative --format=format:'%<(10)%h %<(20)%ar %<(75)%s %an %d' --all | fzf-tmux -d 15 | xargs echo | cut -f 1 -d ' ' | pbcopy"
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 eval "$(rbenv init -)"
