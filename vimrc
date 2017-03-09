@@ -45,6 +45,9 @@ endif
 " -- JavaScript tooling integration
 Plug 'w0rp/ale'
 
+" -- Elm integration
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+
 call plug#end()
 
 filetype plugin indent on
@@ -95,6 +98,9 @@ let g:jsx_ext_required = 0
 " == ervandew/supertab ==
 let g:neocomplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<C-n>"
+
+" -- ElmCast/elm-vim
+let g:elm_format_autosave = 1
 
 " // ===== Editor configuration ===== //
 " Toggling and subtle highlighting of spaces, tabstops and EOLs
