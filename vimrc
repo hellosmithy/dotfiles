@@ -38,6 +38,7 @@ Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 
 " -- CSS syntax highlighting --
+Plug 'ap/vim-css-color'
 if v:version < 704
   Plug 'JulesWang/css.vim', { 'for': 'css' }
 endif
