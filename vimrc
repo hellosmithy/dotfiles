@@ -14,7 +14,7 @@ call plug#begin()
 " -- General editor plugins --
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -29,76 +29,93 @@ Plug 'altercation/vim-colors-solarized'
 
 " -- Automcomplete plugins --
 Plug 'ervandew/supertab'
-Plug 'Shougo/neocomplete'
-Plug 'flowtype/vim-flow', { 'for': 'javascipt' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  Plug 'steelsojka/deoplete-flow'
+else
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+endif
 
 " -- JavaScript syntax highlighting
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " -- CSS syntax highlighting --
 Plug 'ap/vim-css-color'
 if v:version < 704
-  Plug 'JulesWang/css.vim', { 'for': 'css' }
+  Plug 'JulesWang/css.vim'
 endif
 
 " -- JavaScript tooling integration
-Plug 'w0rp/ale'
+if has('nvim')
+  Plug 'neomake/neomake'
+else
+  Plug 'vim-syntastic/syntastic'
+  Plug 'flowtype/vim-flow'
+endif
 
 " -- Elm integration
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 
 call plug#end()
 
-filetype plugin indent on
 syntax enable
 set background=dark
 colorscheme solarized
 set number
-set ts=2 sw=2 et
-set backspace=indent,eol,start
 
-function! ShouldLint()
-  return filereadable('.eslintrc') || filereadable('.eslintrc.json') ? 1 : 0
-endfunction
-
-function! ShouldTypeCheck()
-  return filereadable('.flowconfig') ? 1 : 0
-endfunction
-
+" // ===== Configure NeoMake ===== //
 function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 endfunction
 
-" // ===== Configure NeoMake ===== //
-let g:flow#enable = 0
-let g:flow#omnifunc = ShouldTypeCheck()
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 " // ===== Plugin settings ===== //
+if has('nvim')
+  " -- Shougo/deoplete.nvim --
+  " -- carlitux/deoplete-ternjs --
+  let g:deoplete#enable_at_startup = 1
+  let g:SuperTabDefaultCompletionType = "<c-n>" " -- completion menu from top to bottom
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = 0
+  set completeopt-=preview " -- remove preview from completion menu
 
-" == w0rp/ale ==
-let javascript_linters = []
-if ShouldLint()
-  call add(javascript_linters, 'eslint')
-endif
-if ShouldTypeCheck()
-  call add(javascript_linters, 'flow')
-endif
-let g:ale_linters = { 'javascipt': javascript_linters }
-let g:ale_sign_column_always = 1
+  " -- neomake/neomake --
+  let g:neomake_warning_sign = {
+  \ 'text': 'W',
+  \ 'texthl': 'WarningMsg',
+  \ }
+  let g:neomake_error_sign = {
+  \ 'text': 'E',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+  let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+  let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
 
-" == pangloss/vim-javascript ==
-let g:javascript_plugin_flow = ShouldTypeCheck()
+  let g:neomake_javascript_flow_exe = g:flow_path
+  let g:neomake_jsx_flow_exe = g:flow_path
+
+  autocmd! BufWritePost * Neomake
+else
+  " -- vim-syntastic/syntastic --
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_always_populate_loc_list = 0
+  let g:syntastic_auto_jump = 0
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 1
+  let g:syntastic_javascript_checkers = ['eslint']
+endif
 
 " -- mxw/vim-jsx --
 let g:jsx_ext_required = 0
-
-" == Shougo/neocomplete ==
-" == ervandew/supertab ==
-let g:neocomplete#enable_at_startup = 1
-let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " -- ElmCast/elm-vim
 let g:elm_format_autosave = 1
@@ -111,12 +128,6 @@ highlight SpecialKey ctermfg=233 guifg=#121212 "rgb=18,18,18
 
 " // ===== Keybindings ===== //
 let mapleader = "\<Space>"
-" == christoomey/vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
-nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
-nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 
 nmap <leader>vr :sp $MYVIMRC<CR>
 nmap <leader>so :source $MYVIMRC<CR>
@@ -130,11 +141,8 @@ map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 map <Leader>vsp :vsplit <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
 " -- junegunn/fzf --
-" -- junegunn/fzf.vim --
-nnoremap <C-T> :Files<CR>
-inoremap <C-T> <ESC>:Files<CR>i
-nnoremap <C-F> :Ag<CR>
-inoremap <C-F> <ESC>:Ag<CR>i
+nnoremap <C-T> :FZF<CR>
+inoremap <C-T> <ESC>:FZF<CR>i
 
 " == scrooloose/nerdtree ==
 let NERDTreeShowHidden=1
