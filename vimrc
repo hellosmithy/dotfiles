@@ -1,6 +1,5 @@
 set nocompatible
 
-
 " // ===== Plugins ===== //
 " -- Add support for Python plugins-- 
 if has('nvim')
@@ -125,6 +124,9 @@ let g:elm_format_autosave = 1
 set listchars=tab:▸\ ,eol:¬,space:·
 highlight NonText ctermfg=233 guifg=#121212 "rgb=18,18,18
 highlight SpecialKey ctermfg=233 guifg=#121212 "rgb=18,18,18
+
+" Insert mode cursor
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " // ===== Keybindings ===== //
 let mapleader = "\<Space>"
