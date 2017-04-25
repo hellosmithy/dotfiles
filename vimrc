@@ -72,6 +72,8 @@ function! StrTrim(txt)
 endfunction
 
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+let s:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
+let s:stylelint_path = StrTrim(system('PATH=$(npm bin):$PATH && which stylelint'))
 
 " // ===== Plugin settings ===== //
 if has('nvim')
@@ -95,9 +97,10 @@ if has('nvim')
   \ }
   let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
   let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
-
+  let b:neomake_javascript_eslint_exe = s:eslint_path
   let g:neomake_javascript_flow_exe = g:flow_path
   let g:neomake_jsx_flow_exe = g:flow_path
+  let b:neomake_css_stylelint_exe = s:stylelint_path
 
   autocmd! BufWritePost * Neomake
 else
