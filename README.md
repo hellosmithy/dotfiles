@@ -1,39 +1,24 @@
 # dotfiles
 
-First, install [`neovim`](https://neovim.io/) with [Python3 support](https://github.com/neovim/python-client).
-
-If you're on ~OS X~ macOS and have [homebrew](https://brew.sh) installed,
-you can issue this command:
-
-```
-brew install python3 neovim/neovim/neovim; pip3 install neovim
-```
+If you're on macOS and have [homebrew](https://brew.sh) installed,
+you can issue these commands:
 
 ```
 git clone git@github.com:hellosmithy/dotfiles.git
 cd dotfiles
-./install.sh
+./brew.sh
 ```
 
-On macOS `reattach-to-user-namespace` is required for the tmux configuration shell integration
+## Ruby
 
 ```
-brew install reattach-to-user-namespace
-```
-
-## fzf & The Silver Searcher
-
-```
-brew install fzf the_silver_searcher
+rbenv init
+rbenv install 2.4.1 --verbose
 ```
 
 ## Python bindings
 
 ```
-brew install pyenv
-brew install --HEAD pyenv-virtualenv
-# (or alternatively https://github.com/yyuu/pyenv-installer)
-
 pyenv install 2.7.11
 pyenv install 3.5.2
 
