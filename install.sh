@@ -22,6 +22,7 @@ cat <<WhatWillHappen
 	'$TMUXCONF' --> '$TMUXCONF.bak'
 	'$ZSHRC' --> '$ZSHRC.bak'
     - symlink:
+        '~/init/*' --> '$PWD/init'
         '$VIMRC' --> '$PWD/vimrc'
         '$TMUXCONF' --> '$PWD/tmux.conf'
         '$ZSHRC' --> '$PWD/zshrc'
@@ -52,6 +53,10 @@ if [[ -f $ZSHRC  ]]; then
   mv $ZSHRC $ZSHRC.bak
   echo "done."
 fi
+
+echo -n "Linking init/* to ~/init... "
+ln -s $PWD/init ~
+echo "done"
 
 echo -n "Linking vimrc... "
 ln -s $PWD/vimrc $VIMRC
