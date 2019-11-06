@@ -55,7 +55,7 @@ if [[ -f $ZSHRC  ]]; then
 fi
 
 echo -n "Linking init/* to ~/init... "
-ln -s $PWD/init ~
+ln -sfn $PWD/init ~
 echo "done"
 
 echo -n "Linking vimrc... "

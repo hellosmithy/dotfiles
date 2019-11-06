@@ -123,6 +123,14 @@ let g:jsx_ext_required = 0
 let g:elm_format_autosave = 1
 
 " // ===== Editor configuration ===== //
+filetype plugin indent on
+" show existing tab with 2 spaces width
+set tabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
+" On pressing tab, insert 2 spaces
+set expandtab
+
 " Toggling and subtle highlighting of spaces, tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬,space:·
 highlight NonText ctermfg=233 guifg=#121212 "rgb=18,18,18
@@ -148,6 +156,8 @@ map <Leader>vsp :vsplit <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 " -- junegunn/fzf --
 nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
+nnoremap <C-F> :Ag<CR>
+inoremap <C-F> <ESC>:Ag<CR>i
 
 " == scrooloose/nerdtree ==
 let NERDTreeShowHidden=1
