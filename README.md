@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-- [ChezMoi](https://www.chezmoi.io/install)
+- [chezmoi](https://www.chezmoi.io/install)
 
 ## Getting started
 
