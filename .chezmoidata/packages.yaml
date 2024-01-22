@@ -1,0 +1,20 @@
+packages:
+  darwin:
+    brews:
+      - "git"
+      - "curl"
+      - "exa"
+      - "fnm"
+      - "fzf"
+      - "ghq"
+      - "git"
+      - "jq"
+      - "neovim"
+      - "starship"
+      - "tree"
+      - "wget"
+    taps:
+      - "homebrew/cask-fonts"
+    casks:
+      - "font-jetbrains-mono-nerd-font"
+      - "wezterm"
