@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+
+# Load and initialise completion system
+autoload -Uz compinit
+compinit
+
+# history
+HISTFILE=~/.zsh_history
+
+# source
+#plug "$HOME/.config/zsh/aliases.zsh"
+#plug "$HOME/.config/zsh/exports.zsh"
+
+# plugins
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
+
+export PATH="$HOME/.local/bin":$PATH
+
+# prompt
+eval "$(starship init zsh)"
