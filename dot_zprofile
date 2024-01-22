@@ -6,3 +6,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+# Check if a local zprofile file exists and source it
+if [ -f "$HOME/.config/zsh/.zprofile_local" ]; then
+  source "$HOME/.config/zsh/.zprofile_local"
+fi
