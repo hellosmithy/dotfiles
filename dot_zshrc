@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Check if a local zshrc file exists and source it
+if [ -f "$HOME/.config/zsh/.zshrc_local" ]; then
+  source "$HOME/.config/zsh/.zshrc_local"
+fi
+
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
