@@ -1,5 +1,5 @@
 # Environment Variables
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
