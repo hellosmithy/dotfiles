@@ -16,6 +16,7 @@ compinit
 HISTFILE=~/.zsh_history
 
 # source
+plug "$HOME/.config/zsh/plugins/ghq-fzf.zsh"
 #plug "$HOME/.config/zsh/aliases.zsh"
 #plug "$HOME/.config/zsh/exports.zsh"
 
