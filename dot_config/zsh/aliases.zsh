@@ -1,1 +1,1 @@
-alias ls='exa -lag --header'
+alias ll='exa -lag --header'
