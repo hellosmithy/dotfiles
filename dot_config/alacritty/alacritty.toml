@@ -1,0 +1,11 @@
+import = [
+    "~/.config/alacritty/themes/themes/tokyo-night.toml"
+]
+
+[window]
+padding = { x = 2, y = 2 }
+startup_mode = "Fullscreen"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 14
