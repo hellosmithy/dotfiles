@@ -8,4 +8,4 @@ startup_mode = "Fullscreen"
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-size = 14
+size = 16
