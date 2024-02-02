@@ -1,6 +1,8 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/sh
 
+# .tool-versions hash: {{ include "dot_tool-versions.tmpl" | sha256sum }}
+
 echo "✨ Configuring ASDF..."
 
 TOOL_VERSIONS_FILE="$HOME/.tool-versions"
