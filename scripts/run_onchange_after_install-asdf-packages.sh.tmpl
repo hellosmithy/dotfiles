@@ -5,27 +5,20 @@ echo "✨ Configuring ASDF..."
 
 while read plugin version
 do
-    if asdf plugin list | grep --silent $plugin
-    then
-        asdf plugin update $plugin
-        
-    else
-        asdf plugin add $plugin
-        asdf install $plugin $version
-        asdf global $plugin $version
-        asdf reshim $plugin
-    fi
+  if [[ -z "$plugin" ]]; then
+    continue
+  fi
+  if asdf plugin list | grep --silent $plugin; then
+    echo "✨ Updating $plugin..."
+    asdf plugin update $plugin   
+  else
+    echo "✨ Installing $plugin..."
+    asdf plugin add $plugin
+  fi
 
-    asdf install $plugin $version
-    asdf global $plugin $version
-    asdf reshim $plugin
-
-    if [ $plugin = "nodejs" ]
-    then
-        corepack enable
-        corepack prepare pnpm@latest --activate
-        corepack prepare yarn@stable --activate
-    fi
+  asdf install $plugin $version
+  asdf global $plugin $version
+  asdf reshim $plugin
 
 done < ~/.tool-versions
 
