@@ -1,0 +1,5 @@
+{{- $choices := list "home" "work" -}}
+{{- $machine := promptChoiceOnce . "machine" "What machine are you installing on?" $choices -}}
+[data]
+    machine = {{- $machine | quote -}}
+    
