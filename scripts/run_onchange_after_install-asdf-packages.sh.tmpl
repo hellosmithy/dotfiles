@@ -3,6 +3,14 @@
 
 echo "✨ Configuring ASDF..."
 
+TOOL_VERSIONS_FILE="$HOME/.tool-versions"
+
+# Check if the .tool-versions file exists
+if [ ! -f "$TOOL_VERSIONS_FILE" ]; then
+  echo "The $TOOL_VERSIONS_FILE file does not exist. Skipping ASDF configuration."
+  exit 0
+fi
+
 while read plugin version
 do
   if [[ -z "$plugin" ]]; then
