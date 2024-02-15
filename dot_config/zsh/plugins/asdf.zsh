@@ -1,4 +1,4 @@
-. "$HOME/.asdf/asdf.sh"
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
