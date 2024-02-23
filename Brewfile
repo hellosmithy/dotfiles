@@ -15,5 +15,6 @@ brew "wget"
 
 tap "homebrew/cask-fonts"
 cask "alacritty"
+cask "brave-browser"
 cask "docker"
 cask "font-jetbrains-mono-nerd-font"
