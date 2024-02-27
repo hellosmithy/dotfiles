@@ -574,12 +574,12 @@ require('lazy').setup({
     end,
   },
 
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
+  require 'plugins.debug',
+  require 'plugins.indent_line',
 
   --  Add custom plugins to `lua/custom/plugins/*.lua`
   --    For additional information see: :help lazy.nvim-lazy.nvim-structuring-your-plugins
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {})
 
 -- `modeline`. See `:help modeline`
