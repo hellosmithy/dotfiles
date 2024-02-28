@@ -62,11 +62,14 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Quit
+vim.keymap.set('n', '<leader>qq', "<cmd>qa<cr>", { desc = '[Q]uit all' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
 -- Shortcut to exit terminal mode in the builtin terminal
 -- Otherwise, you need to press <C-\><C-n>
@@ -143,7 +146,8 @@ require('lazy').setup({
       require('which-key').register {
         ['<leader>b'] = { name = '[b]uffer', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[d]ocument', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[d]iagnostics', _ = 'which_key_ignore' },
+        ['<leader>q'] = { name = '[q]uit/session', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[r]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[w]orkspace', _ = 'which_key_ignore' },
@@ -266,7 +270,7 @@ require('lazy').setup({
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace
           --  Similar to document symbols, except searches over your whole project.
