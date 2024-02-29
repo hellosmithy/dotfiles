@@ -1,36 +1,38 @@
 return {
   {
     'akinsho/bufferline.nvim',
-    version = "*",
+    version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     keys = {
-      { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-      { "[b",    "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "]b",    "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
+      { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
+      { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
+      { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
     },
     opts = {
-      -- stylua: ignore
-      close_command = function(n) require("mini.bufremove").delete(n, false) end,
-      -- stylua: ignore
-      right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
-      always_show_bufferline = false,
+      options = {
+        -- stylua: ignore
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        always_show_bufferline = false,
+      },
     },
-    config = function()
-      require("bufferline").setup(opts)
+    config = function(_, opts)
+      require('bufferline').setup(opts)
     end,
   },
 
   {
-    "echasnovski/mini.bufremove",
+    'echasnovski/mini.bufremove',
     keys = {
       {
-        "<leader>bd",
+        '<leader>bd',
         function()
-          local bd = require("mini.bufremove").delete
+          local bd = require('mini.bufremove').delete
           if vim.bo.modified then
-            local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+            local choice = vim.fn.confirm(('Save changes to %q?'):format(vim.fn.bufname()), '&Yes\n&No\n&Cancel')
             if choice == 1 then -- Yes
               vim.cmd.write()
               bd(0)
@@ -41,10 +43,10 @@ return {
             bd(0)
           end
         end,
-        desc = "Delete Buffer",
+        desc = 'Delete Buffer',
       },
       -- stylua: ignore
       { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
-  }
+  },
 }
