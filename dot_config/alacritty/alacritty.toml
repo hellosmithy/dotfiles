@@ -7,5 +7,5 @@ padding = { x = 2, y = 2 }
 startup_mode = "Fullscreen"
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+normal = { family = "FiraCode", style = "Regular" }
 size = 16
