@@ -17,3 +17,11 @@ alias tmux-last='tmux attach-session -t "$(tmux list-sessions -F '#{session_name
 
 # neovim
 alias n='nvim'
+
+# git
+alias g='git'
+alias gcm='git commit -m'
+alias ga='git add'
+alias gp='git push'
+alias gs='git status'
+
