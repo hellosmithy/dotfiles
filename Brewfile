@@ -14,6 +14,7 @@ brew "starship"
 brew "tmux"
 brew "tree"
 brew "wget"
+brew "zellij"
 
 tap "homebrew/cask-fonts"
 cask "alacritty"
