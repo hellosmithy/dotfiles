@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+# Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
 brew bundle --no-lock --file=~/Brewfile
 
 {{ end -}}
