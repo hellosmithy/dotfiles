@@ -18,7 +18,6 @@ brew "zellij"
 
 tap "homebrew/cask-fonts"
 cask "alacritty"
-cask "docker"
 cask "font-fira-code"
 cask "font-jetbrains-mono-nerd-font"
 cask "kitty"
@@ -26,4 +25,5 @@ cask "kitty"
 {{ if eq .machine "home" }}
 cask "brave-browser"
 cask "discord"
+cask "docker"
 {{ end }}
