@@ -1,0 +1,5 @@
+[git_commit]
+tag_disabled  = false # Disable the tag component if you only want to see the commit hash
+only_detached = false # Show the commit hash even in non-detached HEAD state
+format        = "[\\($hash\\)]($style)" # Format to display the commit hash
+style         = "white" # Style for the commit hash display
