@@ -20,6 +20,7 @@ alias n='nvim'
 
 # git
 alias g='git'
+alias gc='git commit'
 alias gcm='git commit -m'
 alias ga='git add'
 alias gp='git push'
