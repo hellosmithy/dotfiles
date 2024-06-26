@@ -24,4 +24,6 @@ alias gcm='git commit -m'
 alias ga='git add'
 alias gp='git push'
 alias gs='git status'
+alias gco='git checkout'
+alias gr='git rebase'
 
