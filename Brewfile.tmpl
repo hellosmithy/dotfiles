@@ -5,7 +5,6 @@ brew "fnm"
 brew "fzf"
 brew "ghq"
 brew "git"
-brew "imagemagick"
 brew "jq"
 brew "jesseduffield/lazygit/lazygit"
 brew "lsd"
@@ -22,6 +21,8 @@ cask "kitty"
 cask "obsidian"
 
 {{ if eq .machine "home" }}
+brew "imagemagick"
+
 cask "alfred"
 cask "brave-browser"
 cask "chatgpt"
