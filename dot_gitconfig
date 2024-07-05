@@ -1,3 +1,7 @@
+[user]
+	name = Ben Smith
+	email = ben@hellosmithy.com
+
 [alias]
   a = add
   c = commit
