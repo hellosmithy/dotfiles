@@ -8,7 +8,7 @@
 [data]
 machine = {{ $machine | quote }}
 email = {{ $email | quote }}
-{{- if eq $machine "work" -}}
+{{- if eq $machine "work"}}
 certs = {{ $certs | quote }}
-{{- end -}}
+{{- end }}
 
