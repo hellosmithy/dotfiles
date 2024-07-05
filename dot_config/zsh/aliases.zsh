@@ -28,4 +28,5 @@ alias gP='git push'
 alias gs='git status'
 alias gco='git checkout'
 alias gr='git rebase'
+alias gst='git status'
 

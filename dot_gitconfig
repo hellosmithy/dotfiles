@@ -1,0 +1,11 @@
+[alias]
+  a = add
+  c = commit
+  cm = commit -m
+  co = checkout
+  st = status
+  p = pull
+  P = push
+  r = rebase
+  undo-commit = reset --soft HEAD^
+
