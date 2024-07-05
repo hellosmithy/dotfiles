@@ -6,9 +6,9 @@
 {{- $certs = promptString "Please enter the path to cacerts file (git config)" -}}
 {{- end -}}
 [data]
-    machine = {{ $machine | quote }}
-    email = {{ $email | quote }}
-    {{- if eq $machine "work" -}}
-    certs = {{ $certs | quote }}
-    {{- end -}}
+machine = {{ $machine | quote }}
+email = {{ $email | quote }}
+{{- if eq $machine "work" -}}
+certs = {{ $certs | quote }}
+{{- end -}}
 
