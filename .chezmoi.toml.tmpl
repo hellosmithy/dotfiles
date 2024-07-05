@@ -1,5 +1,6 @@
 {{- $choices := list "home" "work" -}}
 {{- $machine := promptChoiceOnce . "machine" "What machine are you installing on?" $choices -}}
+{{- $name := promptString "Please enter your name (git config)" "Ben Smith" -}}
 {{- $email := promptString "Please enter your email (git config)" -}}
 {{- $certs := "" -}}
 {{- if eq $machine "work" -}}
@@ -7,6 +8,7 @@
 {{- end -}}
 [data]
 machine = {{ $machine | quote }}
+name = {{ $name | quote }}
 email = {{ $email | quote }}
 {{- if eq $machine "work"}}
 certs = {{ $certs | quote }}
