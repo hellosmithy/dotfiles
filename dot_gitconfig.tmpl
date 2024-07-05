@@ -13,12 +13,12 @@
   r = rebase
   undo-commit = reset --soft HEAD^
 
-{{- if eq .machine "work" -}}
+{{ if eq .machine "work" -}}
 [url "https://github.com/"]
   insteadof = git@github.com:
 [credential]
   helper = osxkeychain
 [http]
   sslCAInfo = {{ .certs }}
-{{- end }}
+{{- end -}}
 
