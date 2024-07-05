@@ -1,7 +1,14 @@
 {{- $choices := list "home" "work" -}}
 {{- $machine := promptChoiceOnce . "machine" "What machine are you installing on?" $choices -}}
 {{- $email := promptString "Please enter your email (git config)" -}}
+{{- $certs := "" -}}
+{{- if eq $machine "work" -}}
+{{- $certs = promptString "Please enter the path to cacerts file (git config)" -}}
+{{- end -}}
 [data]
     machine = {{ $machine | quote }}
     email = {{ $email | quote }}
+    {{- if eq $machine "work" -}}
+    certs = {{ $certs | quote }}
+    {{- end -}}
 
