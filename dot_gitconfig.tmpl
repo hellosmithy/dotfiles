@@ -1,6 +1,6 @@
 [user]
   name = Ben Smith
-  email = {{ if eq .machine "home" -}}ben@hellosmithy.com{{ else -}}{{ include "private/email.txt" }}{{- end }}
+  email = {{ .email }}
 
 [alias]
   a = add

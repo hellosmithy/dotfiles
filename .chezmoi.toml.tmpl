@@ -1,5 +1,7 @@
 {{- $choices := list "home" "work" -}}
 {{- $machine := promptChoiceOnce . "machine" "What machine are you installing on?" $choices -}}
+{{- $email := promptString "Please enter your email" -}}
 [data]
-    machine = {{- $machine | quote -}}
-    
+    machine = {{ $machine | quote }}
+    email = {{ $email | quote }}
+
