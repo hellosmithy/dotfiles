@@ -6,3 +6,6 @@ export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
+# telemetry opt-outs
+export DO_NOT_TRACK=1
+export HOMEBREW_NO_ANALYTICS=1
