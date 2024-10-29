@@ -12,3 +12,7 @@ if [ -f "$HOME/.config/zsh/.zprofile_local" ]; then
 fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Rye for Python version management
+source "$HOME/.rye/env"
+
