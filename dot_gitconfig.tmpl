@@ -11,6 +11,7 @@
   p = pull
   P = push
   r = rebase
+  rm = "!f() { branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'); git rebase ${branch:-master}; }; f"
   undo-commit = reset --soft HEAD^
 
 {{ if eq .machine "work" -}}

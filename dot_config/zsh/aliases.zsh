@@ -28,5 +28,6 @@ alias gP='git push'
 alias gs='git status'
 alias gco='git checkout'
 alias gr='git rebase'
+alias grm='git rebase $(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed "s@^refs/remotes/origin/@@") || git rebase master'
 alias gst='git status'
 
