@@ -16,3 +16,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Rye for Python version management
 source "$HOME/.rye/env"
 
+# Rust/Cargo
+. "$HOME/.cargo/env"
