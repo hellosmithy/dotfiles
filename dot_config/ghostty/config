@@ -21,6 +21,7 @@ keybind = ctrl+s>z=toggle_split_zoom
 # Tabs
 keybind = ctrl+s>left_bracket=previous_tab
 keybind = ctrl+s>right_bracket=next_tab
+keybind = ctrl+s>c=new_tab
 
 # Fonts
 # ghostty +list-fonts
