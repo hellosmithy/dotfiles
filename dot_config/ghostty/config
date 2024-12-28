@@ -22,6 +22,14 @@ keybind = ctrl+s>z=toggle_split_zoom
 keybind = ctrl+s>left_bracket=previous_tab
 keybind = ctrl+s>right_bracket=next_tab
 
+# Fonts
+# ghostty +list-fonts
+font-family = "FiraCode Nerd Font Mono"
+font-feature = calt
+font-feature = liga
+font-feature = dlig
+font-size = 16
+
 # Themes
 # ghostty +list-themes
 theme = nightfox
