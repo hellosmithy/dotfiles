@@ -1,12 +1,18 @@
-# Quick Terminal
-keybind = global:cmd+ctrl+shift+alt+t=toggle_quick_terminal
-quick-terminal-screen=mouse
-quick-terminal-animation-duration=0
-quick-terminal-autohide=1
+# Themes
+# ghostty +list-themes
+theme = nightfox
 
+# Fonts
+# ghostty +list-fonts
+font-family = "FiraCode Nerd Font Mono"
+# enable ligatures
+font-feature = calt
+font-feature = liga
+font-feature = dlig
+font-size = 16
 
 # Splits
-unfocused-split-opacity=0.4
+unfocused-split-opacity=0.6
 
 keybind = ctrl+h=goto_split:left
 keybind = ctrl+j=goto_split:bottom
@@ -23,15 +29,8 @@ keybind = ctrl+s>left_bracket=previous_tab
 keybind = ctrl+s>right_bracket=next_tab
 keybind = ctrl+s>c=new_tab
 
-# Fonts
-# ghostty +list-fonts
-font-family = "FiraCode Nerd Font Mono"
-font-feature = calt
-font-feature = liga
-font-feature = dlig
-font-size = 16
-
-# Themes
-# ghostty +list-themes
-theme = nightfox
-
+# Quick Terminal
+keybind = global:cmd+ctrl+shift+alt+t=toggle_quick_terminal
+quick-terminal-screen=mouse
+quick-terminal-animation-duration=0
+quick-terminal-autohide=1
