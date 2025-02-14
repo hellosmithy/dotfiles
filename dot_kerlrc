@@ -1,0 +1,19 @@
+KERL_CONFIGURE_OPTIONS="\
+--disable-debug \
+--disable-jit \
+--disable-silent-rules \
+--enable-darwin-64bit \
+--enable-dynamic-ssl-lib \
+--enable-gettimeofday-as-os-system-time \
+--enable-hipe \
+--enable-kernel-poll \
+--enable-shared-zlib \
+--enable-smp-support \
+--enable-threads \
+--with-dynamic-trace=dtrace \
+--with-ssl=$(brew --prefix openssl) \
+--without-javac \
+--without-jinterface \
+--without-odbc \
+--without-wx
+"
