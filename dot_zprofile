@@ -17,4 +17,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if [ -r "$HOME/.rye/env" ]; then source "$HOME/.rye/env"; fi
 
 # Rust/Cargo
-. "$HOME/.cargo/env"
+if [ -r "$HOME/.cargo/env" ]; then . "$HOME/.cargo/env"; fi
