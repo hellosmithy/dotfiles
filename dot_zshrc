@@ -19,7 +19,7 @@ plug "$HOME/.config/zsh/exports.zsh"
 # local plugins
 plug "$HOME/.config/zsh/plugins/fnm.zsh"
 plug "$HOME/.config/zsh/plugins/ghq-fzf.zsh"
-plug "$HOME/.config/zsh/plugins/asdf.zsh"
+plug "$HOME/.config/zsh/plugins/mise.zsh"
 
 # external plugins
 plug "zsh-users/zsh-autosuggestions"
