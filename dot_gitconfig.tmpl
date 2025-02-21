@@ -2,6 +2,13 @@
   name = {{ .name }}
   email = {{ .email }}
 
+[init]
+{{ if eq .machine "work" -}}
+  defaultBranch = master
+{{ else }}
+  defaultBranch = main
+{{ end }}
+
 [alias]
   a = add
   c = commit
