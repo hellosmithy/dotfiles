@@ -21,6 +21,7 @@ plug "$HOME/.config/zsh/plugins/fnm.zsh"
 plug "$HOME/.config/zsh/plugins/ghq-fzf.zsh"
 plug "$HOME/.config/zsh/plugins/mise.zsh"
 plug "$HOME/.config/zsh/plugins/mix-escripts.zsh"
+plug "$HOME/.config/zsh/plugins/bun.zsh"
 
 # external plugins
 plug "zsh-users/zsh-autosuggestions"
