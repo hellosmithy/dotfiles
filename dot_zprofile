@@ -13,9 +13,6 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Rye for Python version management
-if [ -r "$HOME/.rye/env" ]; then source "$HOME/.rye/env"; fi
-
 # Rust/Cargo
 if [ -r "$HOME/.cargo/env" ]; then . "$HOME/.cargo/env"; fi
 
