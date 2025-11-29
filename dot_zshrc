@@ -28,6 +28,8 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # direnv
+# load and unload environment variables depending on the current directory
+# checks for .envrc or .env files
 eval "$(direnv hook zsh)"
 
 # prompt
