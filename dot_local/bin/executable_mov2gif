@@ -1,0 +1,12 @@
+#!/bin/sh
+# Convert a screen recording (.mov) to an optimized animated gif
+
+if [ -z "$1" ]; then
+  echo "Usage: mov2gif <input.mov> [output.gif]" >&2
+  exit 1
+fi
+
+input="$1"
+output="${2:-${input%.mov}.gif}"
+
+ffmpeg -i "$input" -pix_fmt rgb8 -r 10 "$output" && gifsicle -O3 "$output" -o "$output"
