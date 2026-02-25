@@ -19,6 +19,7 @@ plug "$HOME/.config/zsh/plugins/mise.zsh"
 plug "$HOME/.config/zsh/plugins/mix-escripts.zsh"
 plug "$HOME/.config/zsh/plugins/bun.zsh"
 plug "$HOME/.config/zsh/plugins/docker.zsh"
+plug "$HOME/.config/zsh/plugins/git-worktree.zsh"
 
 # Load and initialise completion system
 autoload -Uz compinit
