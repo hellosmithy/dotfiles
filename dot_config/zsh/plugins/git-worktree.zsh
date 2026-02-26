@@ -26,7 +26,7 @@ function gwt() {
   local wt_base="$(dirname "$main_root")/$(basename "$main_root").wt"
   local wt_path="$wt_base/$branch"
   mkdir -p "$wt_base"
-  git worktree add "$wt_path" "$branch"
+  git worktree add "$wt_path" "$branch" && cd "$wt_path"
 }
 
 function gwtb() {
@@ -36,5 +36,5 @@ function gwtb() {
   local wt_base="$(dirname "$main_root")/$(basename "$main_root").wt"
   local wt_path="$wt_base/$branch"
   mkdir -p "$wt_base"
-  git worktree add -b "$branch" "$wt_path"
+  git worktree add -b "$branch" "$wt_path" && cd "$wt_path"
 }
