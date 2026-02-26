@@ -8,6 +8,10 @@ fi
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
+# Load and initialise completion system
+autoload -Uz compinit
+compinit
+
 # source
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
@@ -18,12 +22,10 @@ plug "$HOME/.config/zsh/plugins/ghq-fzf.zsh"
 plug "$HOME/.config/zsh/plugins/mise.zsh"
 plug "$HOME/.config/zsh/plugins/mix-escripts.zsh"
 plug "$HOME/.config/zsh/plugins/bun.zsh"
-plug "$HOME/.config/zsh/plugins/docker.zsh"
 plug "$HOME/.config/zsh/plugins/git-worktree.zsh"
-
-# Load and initialise completion system
-autoload -Uz compinit
-compinit
+{{ if eq .machine "home" -}}
+plug "$HOME/.config/zsh/plugins/docker.zsh"
+{{ end -}}
 
 # external plugins
 plug "zsh-users/zsh-autosuggestions"
