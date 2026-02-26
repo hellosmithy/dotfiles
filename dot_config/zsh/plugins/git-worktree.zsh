@@ -62,11 +62,17 @@ function swt() {
   [[ -n "$1" ]] && query_args=(--query "$1")
 
   # Show branch name in fzf; path is first field for cd
+  local current_path
+  current_path=$(git rev-parse --show-toplevel)
   local selected
   selected=$(git worktree list \
-    | awk '{print $1, ($3 != "" ? $3 : "(detached)")}' \
-    | sed 's/\[//;s/\]//' \
-    | fzf -1 --with-nth=2 "${query_args[@]}")
+    | awk -v current="$current_path" '{
+        label = ($3 != "" ? $3 : "(detached)")
+        gsub(/[\[\]]/, "", label)
+        if ($1 == current) label = label " (current)"
+        print $1 "\t" label
+      }' \
+    | fzf -1 --delimiter='\t' --with-nth=2 "${query_args[@]}")
 
-  [[ -n "$selected" ]] && _gwt_cd "${selected%% *}"
+  [[ -n "$selected" ]] && _gwt_cd "${selected%%$'\t'*}"
 }
