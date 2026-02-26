@@ -2,6 +2,7 @@
 #
 # gwt <branch>  - create a worktree for an existing branch
 # gwtb <branch> - create a worktree and a new branch
+# swt           - fzf picker to switch between worktrees
 #
 # Worktrees are placed in a sibling directory: <project>.wt/<branch>
 # Works from the main repo or from within an existing worktree.
@@ -37,4 +38,15 @@ function gwtb() {
   local wt_path="$wt_base/$branch"
   mkdir -p "$wt_base"
   git worktree add -b "$branch" "$wt_path" && cd "$wt_path"
+}
+
+function swt() {
+  _gwt_main_root > /dev/null || { echo "Error: not a git repository" >&2; return 1; }
+  # Show branch name in fzf; path is first field for cd
+  local selected
+  selected=$(git worktree list \
+    | awk '{print $1, ($3 != "" ? $3 : "(detached)")}' \
+    | sed 's/\[//;s/\]//' \
+    | fzf -1 --with-nth=2)
+  [[ -n "$selected" ]] && cd "${selected%% *}"
 }
