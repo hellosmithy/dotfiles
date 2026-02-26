@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Check if a local zshrc file exists and source it
-if [ -f "$HOME/.config/zsh/.zshrc_local" ]; then
-  source "$HOME/.config/zsh/.zshrc_local"
+# Machine-local pre hook (runs before plugins)
+if [ -f "$HOME/.config/zsh/.zshrc_local_pre" ]; then
+  source "$HOME/.config/zsh/.zshrc_local_pre"
 fi
 
 # Created by Zap installer
@@ -38,3 +38,8 @@ eval "$(direnv hook zsh)"
 
 # prompt
 eval "$(starship init zsh)"
+
+# Machine-local post hook (runs after plugins and prompt)
+if [ -f "$HOME/.config/zsh/.zshrc_local_post" ]; then
+  source "$HOME/.config/zsh/.zshrc_local_post"
+fi
