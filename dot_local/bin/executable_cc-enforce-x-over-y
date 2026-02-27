@@ -1,0 +1,29 @@
+#!/bin/bash
+# cc-enforce-x-over-y - Claude Code PreToolUse hook
+#
+# Blocks one or more CLI tools in favour of a preferred alternative.
+#
+# Usage: cc-enforce-x-over-y <preferred> <blocked> [blocked2 ...]
+# Example: cc-enforce-x-over-y pnpm npm
+#          cc-enforce-x-over-y yarn npm pnpm
+
+PREFERRED="$1"
+shift
+BLOCKED=("$@")
+
+COMMAND=$(jq -r '.tool_input.command // empty')
+
+for BLOCKED_TOOL in "${BLOCKED[@]}"; do
+  if echo "$COMMAND" | grep -qE "(^|[^a-zA-Z0-9_-])${BLOCKED_TOOL}([^a-zA-Z0-9_-]|$)"; then
+    jq -n --arg preferred "$PREFERRED" --arg blocked "$BLOCKED_TOOL" '{
+      hookSpecificOutput: {
+        hookEventName: "PreToolUse",
+        permissionDecision: "deny",
+        permissionDecisionReason: "Use \($preferred) instead of \($blocked). Please replace \($blocked) with \($preferred) in your command."
+      }
+    }'
+    exit 0
+  fi
+done
+
+exit 0
