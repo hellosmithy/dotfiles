@@ -1,0 +1,6 @@
+[".claude"]
+    type = "git-repo"
+    url = "git@github.com:hellosmithy/claude-config.git"
+    refreshPeriod = "168h"
+    [".claude".pull]
+        args = ["--ff-only"]
