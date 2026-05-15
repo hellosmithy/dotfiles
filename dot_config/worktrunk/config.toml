@@ -283,3 +283,12 @@ elif [ -f Cargo.toml ]; then cargo fetch
 elif [ -f mix.exs ]; then mix deps.get
 fi
 """
+
+# Fetch the target branch from origin and rebase the current branch onto it,
+# without leaving the current worktree. Defaults to the repo's default branch.
+# Examples: `wt rebase` (onto default), `wt rebase develop`.
+[aliases]
+rebase = """
+t="{% if args %}{{ args }}{% else %}{{ default_branch }}{% endif %}"
+git fetch origin "$t:$t" && wt step rebase "$t"
+"""
