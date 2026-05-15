@@ -264,6 +264,12 @@
 #
 # See `wt hook` (https://worktrunk.dev/hook/) for hook types, execution order, template variables, and examples. User hooks apply to all projects; project hooks (https://worktrunk.dev/config/#project-configuration) apply only to that repository.
 
+# Group worktrees under <repo>.wt/<branch> as a sibling of the repo, e.g. a repo
+# at ~/projects/github.com/owner/myproject gets worktrees at
+# ~/projects/github.com/owner/myproject.wt/feature-auth. Keeps the parent
+# directory tidy when running many worktrees per project.
+worktree-path = "{{ repo_path }}/../{{ repo }}.wt/{{ branch | sanitize }}"
+
 # Install dependencies on worktree creation, auto-detecting the package manager from
 # lockfile presence. Runs in the background so `wt switch -c` doesn't block on it.
 # No-op for repos that don't match any branch.
