@@ -270,15 +270,31 @@
 # directory tidy when running many worktrees per project.
 worktree-path = "{{ repo_path }}/../{{ repo }}.wt/{{ branch | sanitize }}"
 
-# Install dependencies on worktree creation, auto-detecting the package manager from
-# lockfile presence. Runs in the background so `wt switch -c` doesn't block on it.
-# No-op for repos that don't match any branch.
-[post-start]
+# Warm-start new worktrees for yarn/npm projects: copy node_modules from the
+# source worktree, then run an incremental install that reconciles against the
+# lockfile. The [[post-start]] pipeline sequences copy → install. Uses APFS
+# clonefile on macOS (cp -c) for an instant, zero-extra-disk copy; falls back
+# to a normal recursive copy on other filesystems. Skipped for pnpm/bun
+# (already fast via content-addressable stores), Cargo, and Mix.
+# npm uses `install` (not `ci`) so the copied node_modules survives — `npm ci`
+# wipes node_modules before installing. All runs in the background so
+# `wt switch -c` doesn't block.
+[[post-start]]
+copy-node-modules = """
+if [ -f yarn.lock ] || [ -f package-lock.json ]; then
+  src="{{ base_worktree_path }}/node_modules"
+  if [ -d "$src" ]; then
+    cp -cR "$src" . 2>/dev/null || cp -R "$src" .
+  fi
+fi
+"""
+
+[[post-start]]
 deps = """
 if [ -f pnpm-lock.yaml ]; then pnpm install
 elif [ -f yarn.lock ]; then yarn install
 elif [ -f bun.lockb ]; then bun install
-elif [ -f package-lock.json ]; then npm ci
+elif [ -f package-lock.json ]; then npm install
 elif [ -f Cargo.toml ]; then cargo fetch
 elif [ -f mix.exs ]; then mix deps.get
 fi
