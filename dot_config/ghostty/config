@@ -14,25 +14,13 @@ font-size = 16
 # Option as Meta
 macos-option-as-alt = left
 
-# Splits
-unfocused-split-opacity=0.6
-
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=goto_split:right
-
-keybind = ctrl+s>shift+5=new_split:down
-keybind = ctrl+s>shift+'=new_split:right
-keybind = ctrl+s>x=close_surface
-keybind = ctrl+s>z=toggle_split_zoom
-
-# Tabs
-keybind = ctrl+s>left_bracket=previous_tab
-keybind = ctrl+s>right_bracket=next_tab
-keybind = ctrl+s>c=new_tab
+# Multiplexing is herdr's job — see ~/.config/herdr/config.toml.
+# Uncomment to hand splits/tabs back to Ghostty instead.
+# config-file = ?multiplexer.conf
 
 # Quick Terminal
+# The `global:` prefix is what makes Ghostty require Accessibility access on
+# macOS. Drop this binding and that requirement goes away.
 keybind = global:cmd+ctrl+shift+alt+t=toggle_quick_terminal
 quick-terminal-screen=mouse
 quick-terminal-animation-duration=0

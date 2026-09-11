@@ -1,0 +1,57 @@
+# herdr is the multiplexer. The terminal (Kitty/Ghostty) is deliberately a bare
+# rectangle — anything it binds never reaches herdr. See the disabled
+# multiplexer.conf in each terminal's config dir to hand the bindings back.
+#
+# Bindings below mirror ~/.tmux.conf so the muscle memory carries over.
+# Regenerate the full annotated defaults with:  herdr --default-config
+# Reload after editing with:                    herdr server reload-config
+# Show the live binding list with:              prefix+?
+
+[keys]
+prefix = "ctrl+s"
+
+# Splits — tmux.conf uses " for side-by-side and % for stacked, which is the
+# inverse of tmux's own defaults. Kept that way on purpose.
+# Confirmed on herdr 0.9.0: split_vertical opens the new pane to the RIGHT,
+# split_horizontal opens it BELOW. The prefix+v / prefix+minus aliases are
+# herdr's own defaults, kept as a second way in.
+split_vertical = ['prefix+"', "prefix+v"]
+split_horizontal = ["prefix+%", "prefix+minus"]
+
+close_pane = "prefix+x"
+zoom = "prefix+z"
+
+# Pane focus. Bare ctrl+hjkl matches the old Kitty setup; note this shadows
+# readline's clear-screen (ctrl+l) and kill-line (ctrl+k) in shell panes —
+# the pass_keys.py kitten had the same tradeoff, so this is status quo.
+# Drop the bare chords here if you want them back for readline.
+focus_pane_left = ["ctrl+h", "prefix+h"]
+focus_pane_down = ["ctrl+j", "prefix+j"]
+focus_pane_up = ["ctrl+k", "prefix+k"]
+focus_pane_right = ["ctrl+l", "prefix+l"]
+
+# Resize — matches the S-arrow bindings in tmux.conf
+resize_pane_left = "shift+left"
+resize_pane_down = "shift+down"
+resize_pane_up = "shift+up"
+resize_pane_right = "shift+right"
+
+# Tabs. The old Ghostty [ / ] tab bindings are gone: prefix+[ is copy mode
+# (tmux's own default), and prefix+p / prefix+n match tmux-sensible.
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+rename_tab = ["prefix+comma", "prefix+shift+t"]
+switch_tab = "prefix+1..9"
+copy_mode = "prefix+["
+
+# Workspaces — prefix+ctrl+j mirrors tmux.conf's `bind C-j choose-tree`
+workspace_picker = ["prefix+ctrl+j", "prefix+w"]
+
+# prefix+d to detach, matching tmux
+detach = ["prefix+d", "prefix+q"]
+
+[terminal]
+# New panes inherit the cwd of the pane they were split from, matching
+# `launch --cwd=current` and tmux's `-c "#{pane_current_path}"`.
+new_cwd = "follow"
