@@ -6,6 +6,16 @@
 # Regenerate the full annotated defaults with:  herdr --default-config
 # Reload after editing with:                    herdr server reload-config
 # Show the live binding list with:              prefix+?
+#
+# NOTE: herdr writes back to this file when you change settings in its UI
+# (theme, onboarding, etc). When `chezmoi apply` reports "has changed since
+# chezmoi last wrote it", fold the new values in here rather than discarding
+# them — herdr has no include/override layer, so this file is the only home
+# for both hand-written and UI-written settings.
+
+# Suppresses the first-run notification wizard. herdr sets this itself after
+# onboarding; kept here so a fresh machine skips the wizard.
+onboarding = false
 
 [keys]
 prefix = "ctrl+s"
@@ -55,3 +65,9 @@ detach = ["prefix+d", "prefix+q"]
 # New panes inherit the cwd of the pane they were split from, matching
 # `launch --cwd=current` and tmux's `-c "#{pane_current_path}"`.
 new_cwd = "follow"
+
+# Written by herdr's UI. Both values happen to match herdr's own defaults —
+# onboarding just materialised them into the file.
+[theme]
+name = "catppuccin"
+auto_switch = false
