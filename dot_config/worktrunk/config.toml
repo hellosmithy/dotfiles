@@ -270,36 +270,6 @@
 # directory tidy when running many worktrees per project.
 worktree-path = "{{ repo_path }}/../{{ repo }}.wt/{{ branch | sanitize }}"
 
-# Warm-start new worktrees for yarn/npm projects: copy node_modules from the
-# source worktree, then run an incremental install that reconciles against the
-# lockfile. The [[post-start]] pipeline sequences copy → install. Uses APFS
-# clonefile on macOS (cp -c) for an instant, zero-extra-disk copy; falls back
-# to a normal recursive copy on other filesystems. Skipped for pnpm/bun
-# (already fast via content-addressable stores), Cargo, and Mix.
-# npm uses `install` (not `ci`) so the copied node_modules survives — `npm ci`
-# wipes node_modules before installing. All runs in the background so
-# `wt switch -c` doesn't block.
-[[post-start]]
-copy-node-modules = """
-if [ -f yarn.lock ] || [ -f package-lock.json ]; then
-  src="{{ base_worktree_path }}/node_modules"
-  if [ -d "$src" ]; then
-    cp -cR "$src" . 2>/dev/null || cp -R "$src" .
-  fi
-fi
-"""
-
-[[post-start]]
-deps = """
-if [ -f pnpm-lock.yaml ]; then pnpm install
-elif [ -f yarn.lock ]; then yarn install
-elif [ -f bun.lockb ]; then bun install
-elif [ -f package-lock.json ]; then npm install
-elif [ -f Cargo.toml ]; then cargo fetch
-elif [ -f mix.exs ]; then mix deps.get
-fi
-"""
-
 # Fetch the target branch from origin and rebase the current branch onto it,
 # without leaving the current worktree. Defaults to the repo's default branch.
 # Examples: `wt rebase` (onto default), `wt rebase develop`.
@@ -307,4 +277,34 @@ fi
 rebase = """
 t="{% if args %}{{ args }}{% else %}{{ default_branch }}{% endif %}"
 git fetch origin "$t:$t" && wt step rebase "$t"
+"""
+
+# Opt-in dependency warm start: run `wt deps` inside a worktree, or combine it with
+# creation via `wt switch -c <branch> -x 'wt deps'`. Not a post-start hook so
+# new worktrees stay untouched by default.
+# Step 1 copies node_modules from the primary worktree for yarn/npm projects,
+# using APFS clonefile on macOS (cp -c) for an instant, zero-extra-disk copy and
+# falling back to a normal recursive copy elsewhere. pnpm/bun are skipped (already
+# fast via content-addressable stores). Step 2 runs an incremental install that
+# reconciles against the lockfile; npm uses `install` (not `ci`) so the copied
+# node_modules survives.
+[[aliases.deps]]
+copy-node-modules = """
+if [ -f yarn.lock ] || [ -f package-lock.json ]; then
+  src="{{ primary_worktree_path }}/node_modules"
+  if [ -d "$src" ] && [ "$src" != "$PWD/node_modules" ]; then
+    cp -cR "$src" . 2>/dev/null || cp -R "$src" .
+  fi
+fi
+"""
+
+[[aliases.deps]]
+install = """
+if [ -f pnpm-lock.yaml ]; then pnpm install
+elif [ -f yarn.lock ]; then yarn install
+elif [ -f bun.lockb ]; then bun install
+elif [ -f package-lock.json ]; then npm install
+elif [ -f Cargo.toml ]; then cargo fetch
+elif [ -f mix.exs ]; then mix deps.get
+fi
 """
