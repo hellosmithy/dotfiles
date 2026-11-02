@@ -13,8 +13,5 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Rust/Cargo
-if [ -r "$HOME/.cargo/env" ]; then . "$HOME/.cargo/env"; fi
-
 # Activate Mise
 eval "$(mise activate zsh --shims)"
