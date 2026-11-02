@@ -1,7 +1,7 @@
 README.md
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
-.config/zsh/zshenv_local
+.config/zsh/.zshenv_local
 .config/zsh/.zprofile_local
 .config/zsh/.zshrc_local_pre
 .config/zsh/.zshrc_local_post
