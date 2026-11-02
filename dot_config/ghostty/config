@@ -9,7 +9,7 @@ font-family = "FiraCode Nerd Font Mono"
 font-feature = calt
 font-feature = liga
 font-feature = dlig
-font-size = 16
+font-size = 14
 
 # Option as Meta
 macos-option-as-alt = left
